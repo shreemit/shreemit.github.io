@@ -53,7 +53,7 @@ markup:
     #   weight: 2
 
 params:
-  title: ""
+  title: "Shreemit Garimella"
   description: 
   # staticPath: ""  # The path to serve the static files from
   favicon: ""
@@ -110,7 +110,7 @@ params:
     # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
     showBrandLogo: true # Show brand logo in nav bar | default is true
     brandName: "" # Brand name for the brand | default is the title variable
-    disableSearch: false
+    disableSearch: true
     searchPlaceholder: "Search"
     stickyNavBar:
       enable : false
@@ -173,7 +173,7 @@ params:
     # title: "Custom Name"
     items:
       - job: "Graduate Teaching Assistant"
-        company: "University of Washington"
+        company: "Univ of Washington"
         companyUrl: "https://www.washington.edu"
         date: "Dec 2023 - March 2024"
         info:
@@ -202,9 +202,9 @@ params:
         date: "Jan 2023 - June 2023"
         info:
           enable: false
-        featuredLink:
-          enable: true
-          url: "https://www.engr.washington.edu/industry/capstone-projects/images/UW_NanoString_Team-649b6a6e77415.pdf"
+        # featuredLink:
+        #   enable: true
+        #   url: "https://www.engr.washington.edu/industry/capstone-projects/images/UW_NanoString_Team-649b6a6e77415.pdf"
         content: |
           - Trained a custom deep learning U-Net architecture using PyTorch for RNA tissue sample analysis
           - Improved prediction accuracy by 40% compared to traditional image processing methods
@@ -212,9 +212,11 @@ params:
           - Reduced training time and computational resource requirements
 
       - job: "Software Developer"
-        company: "HumanFractal.ai"
+        company: "HumanFractal"
         companyUrl: "https://www.humanfractal.ai/"
         date: "March 2021 - June 2022"
+        info:
+          enable: false
         featuredLink:
           enable: true
           url: "https://apps.apple.com/in/app/resolute/id1570787708m"
@@ -230,9 +232,11 @@ params:
           privacy, and increased the time and budget savings for the startup
 
       - job: "Software Engineer Intern"
-        company: "HumanFractal.ai"
-        companyUrl: "https://example.com"
-        date: "Feb 2016 - Mar 2017"
+        company: "HumanFractal"
+        companyUrl: "https://www.humanfractal.ai/"
+        info:
+          enable: false
+        date: "Nov 2020 - Feb 2021"
         content: |
           - Developed an interactive chatbot using Amazon Lex and AWS Lambda to streamline hospital appointment scheduling
           and enhance customer experience with a cutting-edge virtual assistant solution that reduced hospital workloads by 20%
@@ -299,7 +303,7 @@ params:
           - "Transformers"
         links:
           - icon: fab fa-github
-            url: https://github.com/shreemit/recipe-generator
+            url: https://github.com/shreemit/RecipeGeneratorNLP
 
       - title: Handwritten Notes Captioning
         content: Multimodal machine learning model using Low-Rank Adaptation (LoRA) for efficient annotation of handwritten student assignments.
@@ -312,18 +316,18 @@ params:
           - "Multimodal ML"
           - "Computer Vision"
           - "NLP"
-        links:
-          - icon: fab fa-github
-            url: https://github.com/shreemit/handwritten-notes-captioning
-          - icon: fa fa-external-link
-            url: https://shreemit.github.io/handwritten-notes-demo
+        # links:
+        #   - icon: fab fa-github
+        #     url: https://github.com/shreemit/handwritten-notes-captioning
+        #   - icon: fa fa-external-link
+        #     url: https://shreemit.github.io/handwritten-notes-demo
 
       - title: Movie Recommendation Engine
         content: Comprehensive recommendation engine leveraging both collaborative and content-based filtering methods with rigorous performance evaluation.
         image: images/icons/movies.jpeg
         featured:
           name: System
-          link: https://github.com/shreemit/movie-recommender
+          link: https://github.com/shreemit/movie-recs
         badges:
           - "Python"
           - "Machine Learning"
@@ -331,41 +335,15 @@ params:
           - "Data Analysis"
         links:
           - icon: fab fa-github
-            url: https://github.com/shreemit/movie-recommender
-          - icon: fa fa-chart-bar
-            url: https://shreemit.github.io/recommender-metrics
-
-  achievements:
-    enable: true
-    # title: "Custom Name"
-    items:
-      - title: Google kickstart runner
-        content: I solved all problems with optimal solution.
-        url: https://example.com
-        image: /images/achievment.jpg
-      - title: Facebook Hackathon Winner
-        content: Developed a product using Artificial Intelligence.
-        image: /images/achievment.jpg
-      - title: Hugo Profile
-        content: Developed a theme and getting 1K+ downloads per month.
-        url: "https://github.com/gurusabarish/hugo-profile"
-        image: /images/achievment.jpg
-
+            url: https://github.com/shreemit/movie-recs
 
 
   #Contact
   contact:
     enable: true
-    # title: "Custom Name"
-    content: My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+    content: My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
     btnName: Mail me
     btnLink: mailto:shreemit27@gmail.com
-    # formspree:
-    #   enable: true # `contact.email` value will be ignored
-    #   formId: abcdefgh # Take it from your form's endpoint, like 'https://formspree.io/f/abcdefgh'
-    #   emailCaption: "Enter your email address"
-    #   messageCaption: "Enter your message here"
-    #   messageRows: 5
 
   footer:
     recentPosts:

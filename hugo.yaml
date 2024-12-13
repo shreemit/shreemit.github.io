@@ -83,6 +83,7 @@ params:
     fontWeight: 100 # default: 400
     lineHeight: 1.5 # default: 1.5
     textAlign: left # default: left
+    fontFamily: "Arial, sans-serif"
 
   # color preference
   # When using hex codes for colors, quotations must be used along with the # sign
@@ -153,18 +154,23 @@ params:
     enable: true
     title: "About Me"
     image: "/images/machine-learning.svg"
-    content: 
-      Hey there! I'm a tech enthusiast who loves turning cool ideas into reality through machine learning and software development. Whether I'm building AI-powered healthcare apps, training computer vision models, or creating smart recommendation systems, I'm all about solving real-world problems with code. My goal? To build technology that not only looks good on paper but actually makes a difference in people's lives.
+    content: |
+      Hey there! I'm a tech enthusiast who loves turning cool ideas into reality through machine learning and software development. 
+      Whether I'm building AI-powered healthcare apps, training computer vision models, or creating smart recommendation systems, I'm all about solving real-world problems with code. 
+      
+      My goal? To build technology that not only looks good on paper but actually makes a difference in people's lives.
     skills:
       enable: true
       title: "Here are a few technologies I've been working with recently:"
       items:
-        - "HTML"
-        - "CSS"
-        - "JavaScript"
-        - "React"
-        - "Node"
-        - "Express"
+        - "Python"
+        - "HuggingFace"
+        - "PyTorch"
+        - "Swift"
+        - "Azure"
+        - "Tensorflow"
+        - "SQL"
+        - "Scikit-learn"
 
   # Experience
   experience:

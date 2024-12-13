@@ -1,0 +1,3 @@
+[submodule "shreemit/themes/hugo-profile"]
+	path = shreemit/themes/hugo-profile
+	url = https://github.com/gurusabarish/hugo-profile.git

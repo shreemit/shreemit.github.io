@@ -178,6 +178,17 @@ params:
     index: false
     # title: "Custom Name"
     items:
+      - job: "Founding Machine Learning Engineer"
+        company: "Stealth Startup"
+        date: "Oct 2024 - Present"
+        info:
+          enable: false
+        featuredLink:
+          enable: false
+        content: |
+          - Leading the development of a conversational AI companion capable of engaging in natural language interactions with users about their preferences.
+          - Implemented a user persona discovery system to collect and store detailed user information, including preferred name, interests, and other habits.
+          
       - job: "Graduate Teaching Assistant"
         company: "Univ of Washington"
         companyUrl: "https://www.washington.edu"

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shreemit Garimella — AI Engineer</title>
+    <meta
+      name="description"
+      content="Shreemit Garimella — AI Engineer bridging machine learning and user-centric technologies. ML, NLP, computer vision, and full-stack AI products."
+    />
+    <meta property="og:title" content="Shreemit Garimella — AI Engineer" />
+    <meta
+      property="og:description"
+      content="AI Engineer bridging machine learning and user-centric technologies."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shreemit.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="preloader" id="preloader">
+      <div class="preloader-inner">
+        <span class="preloader-name" id="preloader-name">SHREEMIT</span>
+        <span class="preloader-count" id="preloader-count">000</span>
+      </div>
+    </div>
+
+    <canvas id="webgl" aria-hidden="true"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+      <a class="nav-brand" href="#hero" data-scrollto="#hero" data-hover>SG©</a>
+      <nav class="nav-links">
+        <a href="#about" data-scrollto="#about" data-hover>ABOUT</a>
+        <a href="#experience" data-scrollto="#experience" data-hover>WORK</a>
+        <a href="#projects" data-scrollto="#projects" data-hover>PROJECTS</a>
+        <a href="#contact" data-scrollto="#contact" data-hover>CONTACT</a>
+      </nav>
+      <a
+        class="nav-resume magnetic"
+        id="resume-link"
+        href="https://drive.google.com/file/d/1hh3OAL_ARGo8wWrwPhBQCODGeq-iGOnz/view?usp=sharing"
+        target="_blank"
+        rel="noopener"
+        data-hover
+        >RESUME ↗</a
+      >
+    </header>
+
+    <main id="main">
+      <section class="hero" id="hero">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <p class="hero-kicker mono" id="hero-kicker">// HI, MY NAME IS</p>
+          <h1 class="hero-title" id="hero-title">
+            <span class="hero-line">SHREEMIT</span>
+            <span class="hero-line hero-line-outline">GARIMELLA</span>
+          </h1>
+          <div class="hero-meta">
+            <p class="hero-role" id="hero-role">AI ENGINEER</p>
+            <p class="hero-tagline mono" id="hero-tagline">
+              BRIDGING MACHINE LEARNING<br />AND USER-CENTRIC TECHNOLOGIES
+            </p>
+          </div>
+        </div>
+        <div class="hero-scrollhint mono" id="hero-scrollhint">
+          <span>SCROLL</span>
+          <span class="hero-scrollhint-arrow">↓</span>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="about-pin" id="about-pin">
+          <div class="about-grid">
+            <div class="about-media">
+              <div class="about-media-frame" id="portrait-frame" data-hover>
+                <img
+                  src="/images/portrait.jpg"
+                  alt="Portrait of Shreemit Garimella"
+                  id="portrait-img"
+                />
+              </div>
+              <p class="about-media-caption mono">FIG 01. — THE HUMAN</p>
+            </div>
+            <div class="about-text">
+              <p class="section-label mono">01 / ABOUT</p>
+              <div id="about-lines"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="experience" id="experience">
+        <div class="experience-head">
+          <p class="section-label mono">02 / EXPERIENCE</p>
+          <h2 class="section-title">WHERE I'VE<br />BEEN</h2>
+        </div>
+        <div class="timeline" id="timeline"></div>
+        <div class="education" id="education">
+          <p class="section-label mono">02.5 / EDUCATION</p>
+          <div class="education-grid" id="education-grid"></div>
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <div class="projects-pin" id="projects-pin">
+          <div class="projects-track" id="projects-track"></div>
+        </div>
+      </section>
+
+      <section class="skills" id="skills">
+        <p class="section-label mono skills-label">04 / ARSENAL</p>
+        <div class="skills-bento" id="skills-bento"></div>
+      </section>
+
+      <section class="contact" id="contact">
+        <p class="contact-kicker mono" id="contact-kicker">
+          05 / GOT AN IDEA? MY INBOX IS ALWAYS OPEN.
+        </p>
+        <a
+          class="contact-title"
+          id="contact-title"
+          href="mailto:shreemit27@gmail.com"
+          data-hover
+        >
+          <span class="contact-line">LET'S</span>
+          <span class="contact-line contact-line-outline">TALK</span>
+        </a>
+        <div class="contact-links" id="contact-links">
+          <a class="magnetic mono" href="https://github.com/shreemit" target="_blank" rel="noopener" data-hover data-scramble>GITHUB ↗</a>
+          <a class="magnetic mono" href="https://linkedin.com/in/shreemit" target="_blank" rel="noopener" data-hover data-scramble>LINKEDIN ↗</a>
+          <a class="magnetic mono" href="mailto:shreemit27@gmail.com" data-hover data-scramble>SHREEMIT27@GMAIL.COM</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="mono">© 2026 SHREEMIT GARIMELLA</p>
+      <p class="mono">BUILT WITH GSAP + THREE.JS</p>
+      <p class="mono">SEATTLE, WA — <span id="footer-time"></span></p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

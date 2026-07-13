@@ -6,15 +6,26 @@
     <title>Shreemit Garimella — AI Engineer</title>
     <meta
       name="description"
-      content="Shreemit Garimella — AI Engineer bridging machine learning and user-centric technologies. ML, NLP, computer vision, and full-stack AI products."
+      content="Shreemit Garimella — AI Engineer at Axon building LLM case intelligence, semantic search, and evaluation pipelines. Production ML, NLP, and full-stack AI systems."
     />
+    <link rel="canonical" href="https://shreemit.github.io/" />
     <meta property="og:title" content="Shreemit Garimella — AI Engineer" />
     <meta
       property="og:description"
-      content="AI Engineer bridging machine learning and user-centric technologies."
+      content="Building LLM case intelligence at Axon — semantic search, evaluation pipelines, and production AI systems."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://shreemit.github.io/" />
+    <meta property="og:image" content="https://shreemit.github.io/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shreemit Garimella — AI Engineer" />
+    <meta
+      name="twitter:description"
+      content="Building LLM case intelligence at Axon — semantic search, evaluation pipelines, and production AI systems."
+    />
+    <meta name="twitter:image" content="https://shreemit.github.io/og.jpg" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,8 +33,35 @@
       href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Shreemit Garimella",
+        "url": "https://shreemit.github.io/",
+        "image": "https://shreemit.github.io/og.jpg",
+        "jobTitle": "AI Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Axon"
+        },
+        "email": "mailto:shreemit27@gmail.com",
+        "sameAs": [
+          "https://github.com/shreemit",
+          "https://linkedin.com/in/shreemit"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Seattle",
+          "addressRegion": "WA",
+          "addressCountry": "US"
+        }
+      }
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <div class="preloader" id="preloader">
       <div class="preloader-inner">
         <span class="preloader-name" id="preloader-name">SHREEMIT</span>
@@ -39,24 +77,55 @@
 
     <header class="nav" id="nav">
       <a class="nav-brand" href="#hero" data-scrollto="#hero" data-hover>SG©</a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary">
         <a href="#about" data-scrollto="#about" data-hover>ABOUT</a>
         <a href="#experience" data-scrollto="#experience" data-hover>WORK</a>
         <a href="#projects" data-scrollto="#projects" data-hover>PROJECTS</a>
+        <a href="#skills" data-scrollto="#skills" data-hover>SKILLS</a>
         <a href="#contact" data-scrollto="#contact" data-hover>CONTACT</a>
       </nav>
-      <a
-        class="nav-resume magnetic"
-        id="resume-link"
-        href="https://drive.google.com/file/d/1hh3OAL_ARGo8wWrwPhBQCODGeq-iGOnz/view?usp=sharing"
-        target="_blank"
-        rel="noopener"
-        data-hover
-        >RESUME ↗</a
-      >
+      <div class="nav-actions">
+        <a
+          class="nav-resume magnetic"
+          id="resume-link"
+          href="/resume.pdf"
+          download
+          rel="noopener"
+          data-hover
+          >RESUME ↗</a
+        >
+        <button
+          type="button"
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
     </header>
 
-    <main id="main">
+    <div
+      class="nav-drawer"
+      id="nav-drawer"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Mobile navigation"
+    >
+      <nav class="nav-drawer-links" aria-label="Mobile">
+        <a href="#about" data-scrollto="#about">ABOUT</a>
+        <a href="#experience" data-scrollto="#experience">WORK</a>
+        <a href="#projects" data-scrollto="#projects">PROJECTS</a>
+        <a href="#skills" data-scrollto="#skills">SKILLS</a>
+        <a href="#contact" data-scrollto="#contact">CONTACT</a>
+        <a href="/resume.pdf" download id="drawer-resume">RESUME ↗</a>
+      </nav>
+    </div>
+
+    <main id="main" tabindex="-1">
       <section class="hero" id="hero">
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-inner">
@@ -66,10 +135,32 @@
             <span class="hero-line hero-line-outline">GARIMELLA</span>
           </h1>
           <div class="hero-meta">
-            <p class="hero-role" id="hero-role">AI ENGINEER</p>
+            <div class="hero-meta-left">
+              <p class="hero-role" id="hero-role">AI ENGINEER</p>
+              <p class="hero-proof mono" id="hero-proof">
+                BUILDING LLM CASE INTELLIGENCE AT AXON
+              </p>
+            </div>
             <p class="hero-tagline mono" id="hero-tagline">
-              BRIDGING MACHINE LEARNING<br />AND USER-CENTRIC TECHNOLOGIES
+              PRODUCTION SEMANTIC SEARCH, EVALUATION PIPELINES,<br />AND FULL-STACK AI SYSTEMS
             </p>
+          </div>
+          <div class="hero-ctas" id="hero-ctas">
+            <a
+              class="hero-cta hero-cta-primary magnetic"
+              id="hero-resume"
+              href="/resume.pdf"
+              download
+              data-hover
+              >RESUME ↗</a
+            >
+            <a
+              class="hero-cta hero-cta-secondary"
+              href="#contact"
+              data-scrollto="#contact"
+              data-hover
+              >CONTACT</a
+            >
           </div>
         </div>
         <div class="hero-scrollhint mono" id="hero-scrollhint">
@@ -84,9 +175,12 @@
             <div class="about-media">
               <div class="about-media-frame" id="portrait-frame" data-hover>
                 <img
-                  src="/images/portrait.jpg"
+                  src="/images/portrait.webp"
                   alt="Portrait of Shreemit Garimella"
                   id="portrait-img"
+                  width="800"
+                  height="1200"
+                  decoding="async"
                 />
               </div>
               <p class="about-media-caption mono">FIG 01. — THE HUMAN</p>
@@ -106,7 +200,7 @@
         </div>
         <div class="timeline" id="timeline"></div>
         <div class="education" id="education">
-          <p class="section-label mono">02.5 / EDUCATION</p>
+          <p class="section-label mono">EDUCATION</p>
           <div class="education-grid" id="education-grid"></div>
         </div>
       </section>
@@ -130,15 +224,41 @@
           class="contact-title"
           id="contact-title"
           href="mailto:shreemit27@gmail.com"
+          aria-label="Email Shreemit Garimella at shreemit27@gmail.com"
           data-hover
         >
           <span class="contact-line">LET'S</span>
           <span class="contact-line contact-line-outline">TALK</span>
         </a>
         <div class="contact-links" id="contact-links">
-          <a class="magnetic mono" href="https://github.com/shreemit" target="_blank" rel="noopener" data-hover data-scramble>GITHUB ↗</a>
-          <a class="magnetic mono" href="https://linkedin.com/in/shreemit" target="_blank" rel="noopener" data-hover data-scramble>LINKEDIN ↗</a>
-          <a class="magnetic mono" href="mailto:shreemit27@gmail.com" data-hover data-scramble>SHREEMIT27@GMAIL.COM</a>
+          <a
+            class="magnetic mono"
+            id="contact-github"
+            href="https://github.com/shreemit"
+            target="_blank"
+            rel="noopener"
+            data-hover
+            data-scramble
+            >GITHUB ↗</a
+          >
+          <a
+            class="magnetic mono"
+            id="contact-linkedin"
+            href="https://linkedin.com/in/shreemit"
+            target="_blank"
+            rel="noopener"
+            data-hover
+            data-scramble
+            >LINKEDIN ↗</a
+          >
+          <a
+            class="magnetic mono"
+            id="contact-email"
+            href="mailto:shreemit27@gmail.com"
+            data-hover
+            data-scramble
+            >SHREEMIT27@GMAIL.COM</a
+          >
         </div>
       </section>
     </main>

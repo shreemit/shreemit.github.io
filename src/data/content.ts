@@ -18,9 +18,14 @@ export interface Education {
 export interface Project {
   title: string;
   description: string;
+  outcome: string;
   image: string;
+  imageWidth: number;
+  imageHeight: number;
   badges: string[];
   github: string;
+  demo?: string;
+  role?: string;
 }
 
 export const identity = {
@@ -28,72 +33,42 @@ export const identity = {
   firstName: "SHREEMIT",
   lastName: "GARIMELLA",
   role: "AI Engineer",
-  tagline: "Bridging Machine Learning and User-Centric Technologies",
+  proof: "Building LLM case intelligence at Axon",
+  tagline: "Production semantic search, evaluation pipelines, and full-stack AI systems",
   email: "shreemit27@gmail.com",
   github: "https://github.com/shreemit",
   linkedin: "https://linkedin.com/in/shreemit",
-  resume:
-    "https://drive.google.com/file/d/1hh3OAL_ARGo8wWrwPhBQCODGeq-iGOnz/view?usp=sharing",
-  portrait: "/images/portrait.jpg",
+  resume: "/resume.pdf",
+  portrait: "/images/portrait.webp",
+  portraitWidth: 800,
+  portraitHeight: 1200,
+  location: "Seattle, WA",
+  siteUrl: "https://shreemit.github.io/",
+  ogImage: "https://shreemit.github.io/og.jpg",
 };
 
 export const about = {
   paragraphs: [
     "Hey there! I'm currently at Axon building LLM-powered systems for semantic search and case intelligence — from Go microservices that manage multi-turn context to evaluation pipelines that validate AI quality at scale.",
-    "Whether I'm building AI-powered healthcare apps, training computer vision models, or shipping conversational AI products, I'm all about solving real-world problems with code.",
-    "My goal? To build technology that not only looks good on paper but actually makes a difference in people's lives.",
+    "I specialize in shipping production AI: retrieval systems, synthetic eval data, rubric-based quality harnesses, and the services that keep them reliable under load. Before that I built healthcare ML and consumer products spanning Swift, PyTorch, and AWS.",
+    "Open to AI/ML engineering roles focused on LLM systems, evaluation, and applied ML — especially where search quality and real-world impact matter.",
   ],
 };
 
 export const skillGroups = [
   {
     label: "Languages",
-    items: [
-      "Python",
-      "Java",
-      "JavaScript",
-      "TypeScript",
-      "Go",
-      "Swift",
-      "SQL",
-      "C++",
-      "C",
-    ],
+    items: ["Python", "Go", "TypeScript", "Swift", "SQL"],
   },
   {
     label: "Frameworks",
-    items: [
-      "PyTorch",
-      "React",
-      "Scikit-learn",
-      "NLTK",
-      "TensorFlow",
-      "Keras",
-      "Flask",
-      "Airflow",
-      "Pandas",
-      "Matplotlib",
-      "HuggingFace",
-    ],
+    items: ["PyTorch", "Hugging Face", "React", "LangChain", "Scikit-learn"],
   },
   {
     label: "Tools",
-    items: [
-      "Git",
-      "Docker",
-      "Jira",
-      "AWS",
-      "Azure",
-      "Weights & Biases",
-      "MongoDB",
-      "MySQL",
-      "Tableau",
-      "SQLite",
-    ],
+    items: ["Docker", "AWS", "Weights & Biases", "Git"],
   },
 ];
-
-export const skills = skillGroups.flatMap((g) => g.items);
 
 export const experience: Experience[] = [
   {
@@ -115,7 +90,8 @@ export const experience: Experience[] = [
     date: "Dec 2024 — Jan 2025",
     year: "2024",
     bullets: [
-      "Built a conversational AI companion that engages users in natural language interactions, personalizing responses based on user preferences and conversation history.",
+      "Built a conversational AI companion with natural-language chat, preference memory, and history-aware responses across a full-stack TypeScript/Python stack.",
+      "Implemented session context handling and personalization so replies stayed coherent across multi-turn conversations rather than single-shot prompts.",
     ],
   },
   {
@@ -209,40 +185,65 @@ export const projects: Project[] = [
   {
     title: "LeaseGPT",
     description:
-      "A personalized apartment search chatbot utilizing advanced AI technologies to provide tailored recommendations based on user needs.",
-    image: "/images/leasegpt.jpeg",
+      "RAG chatbot that recommends apartments from natural-language preferences using embeddings and vector search.",
+    outcome:
+      "End-to-end retrieval pipeline: OpenAI embeddings, Pinecone index, and LangChain orchestration for tailored listings.",
+    role: "Solo project",
+    image: "/images/leasegpt.webp",
+    imageWidth: 2048,
+    imageHeight: 2048,
     badges: ["OpenAI", "LangChain", "Pinecone", "Vector DB"],
     github: "https://github.com/shreemit/LeaseGPT",
   },
   {
-    title: "ViT Mixture of Experts",
-    description:
-      "Advanced computer vision model optimizing performance on CIFAR-10 through dynamic expert selection and enhanced accuracy.",
-    image: "/images/moe.webp",
-    badges: ["PyTorch", "Computer Vision", "Transformers", "ML"],
-    github: "https://github.com/shreemit/ViT-MoE",
-  },
-  {
-    title: "Recipe Generator",
-    description:
-      "Seq2seq T5 model fine-tuned on over 1 million recipes, generating novel recipes from ingredient lists using advanced NLP techniques.",
-    image: "/images/recipe.jpeg",
-    badges: ["PyTorch", "Hugging Face", "NLP", "Transformers"],
-    github: "https://github.com/shreemit/RecipeGeneratorNLP",
-  },
-  {
     title: "Handwritten Notes Captioning",
     description:
-      "Multimodal machine learning model using Low-Rank Adaptation (LoRA) for efficient annotation of handwritten student assignments.",
-    image: "/images/lora.jpeg",
+      "Multimodal model that captions handwritten student assignments with parameter-efficient fine-tuning.",
+    outcome:
+      "LoRA adaptation for vision-language annotation — efficient training without full model fine-tunes.",
+    role: "Solo / research",
+    image: "/images/lora.webp",
+    imageWidth: 2048,
+    imageHeight: 2048,
     badges: ["LoRA", "Multimodal ML", "Computer Vision", "NLP"],
     github: "https://github.com/shreemit/handwritten-notes-captioning",
   },
   {
+    title: "Recipe Generator",
+    description:
+      "Seq2seq T5 model fine-tuned to generate novel recipes from ingredient lists.",
+    outcome:
+      "Trained on 1M+ recipes; demonstrates large-scale NLP fine-tuning and generative evaluation.",
+    role: "Solo project",
+    image: "/images/recipe.webp",
+    imageWidth: 2048,
+    imageHeight: 2048,
+    badges: ["PyTorch", "Hugging Face", "NLP", "Transformers"],
+    github: "https://github.com/shreemit/RecipeGeneratorNLP",
+  },
+  {
+    title: "ViT Mixture of Experts",
+    description:
+      "Vision Transformer with dynamic expert routing for CIFAR-10 classification.",
+    outcome:
+      "Compared MoE routing against dense baselines to study accuracy vs. compute tradeoffs.",
+    role: "Solo / research",
+    image: "/images/moe.webp",
+    imageWidth: 1024,
+    imageHeight: 1024,
+    badges: ["PyTorch", "Computer Vision", "Transformers", "ML"],
+    github: "https://github.com/shreemit/ViT-MoE",
+  },
+  {
     title: "Movie Recommendation Engine",
     description:
-      "Comprehensive recommendation engine leveraging collaborative and content-based filtering with rigorous performance evaluation.",
-    image: "/images/movies.jpeg",
+      "Hybrid recommender combining collaborative and content-based filtering.",
+    outcome:
+      "Benchmarked ranking quality across filtering strategies with systematic evaluation.",
+    role: "Solo project",
+    image: "/images/movies.webp",
+    imageWidth: 2048,
+    imageHeight: 2048,
     badges: ["Python", "ML", "Recommendation Systems", "Data Analysis"],
     github: "https://github.com/shreemit/movie-recs",
   },

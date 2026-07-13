@@ -17,7 +17,15 @@ export function buildHeroIntro(): gsap.core.Timeline {
       // restore clean DOM text and clear inline tween styles
       split.revert();
       gsap.set(
-        ["#hero-kicker", "#hero-role", "#hero-tagline", "#nav", "#hero-scrollhint"],
+        [
+          "#hero-kicker",
+          "#hero-role",
+          "#hero-proof",
+          "#hero-tagline",
+          "#hero-ctas",
+          "#nav",
+          "#hero-scrollhint",
+        ],
         { clearProps: "all" }
       );
     },
@@ -28,25 +36,56 @@ export function buildHeroIntro(): gsap.core.Timeline {
       duration: 1.1,
       ease: "power4.out",
       stagger: 0.028,
+      immediateRender: true,
     })
     .from(
       "#hero-kicker",
-      { autoAlpha: 0, x: -24, duration: 0.6, ease: "power3.out" },
+      {
+        autoAlpha: 0,
+        x: -24,
+        duration: 0.6,
+        ease: "power3.out",
+        immediateRender: true,
+      },
       "-=0.7"
     )
     .from(
-      ["#hero-role", "#hero-tagline"],
-      { autoAlpha: 0, y: 24, duration: 0.7, ease: "power3.out", stagger: 0.08 },
+      ["#hero-role", "#hero-proof", "#hero-tagline"],
+      {
+        autoAlpha: 0,
+        y: 24,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: 0.08,
+        immediateRender: true,
+      },
       "-=0.5"
     )
     .from(
+      "#hero-ctas",
+      {
+        autoAlpha: 0,
+        y: 16,
+        duration: 0.6,
+        ease: "power3.out",
+        immediateRender: true,
+      },
+      "-=0.4"
+    )
+    .from(
       "#nav",
-      { y: -72, autoAlpha: 0, duration: 0.7, ease: "power3.out" },
+      {
+        y: -72,
+        autoAlpha: 0,
+        duration: 0.7,
+        ease: "power3.out",
+        immediateRender: true,
+      },
       "-=0.5"
     )
     .from(
       "#hero-scrollhint",
-      { autoAlpha: 0, duration: 0.6 },
+      { autoAlpha: 0, duration: 0.6, immediateRender: true },
       "-=0.3"
     );
 

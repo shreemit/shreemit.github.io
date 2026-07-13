@@ -4,7 +4,9 @@ import { reducedMotion, isMobile } from "./core/motion";
 import { initScroll } from "./core/scroll";
 import { initCursor, initMagnetic } from "./core/cursor";
 import { runPreloader } from "./preloader";
+import { initMobileNav } from "./core/nav";
 import {
+  renderIdentity,
   renderAbout,
   renderExperience,
   renderProjects,
@@ -25,6 +27,7 @@ import {
 
 async function boot(): Promise<void> {
   // data-driven DOM first, so triggers measure the real layout
+  renderIdentity();
   renderAbout();
   renderExperience();
   renderProjects();
@@ -33,6 +36,7 @@ async function boot(): Promise<void> {
 
   initCursor();
   initScroll();
+  initMobileNav();
 
   // wait for fonts before splitting text, otherwise chars measure wrong
   await document.fonts.ready;
@@ -78,11 +82,12 @@ async function boot(): Promise<void> {
     }
   })();
 
+  // apply from() start states while the overlay still covers the hero
+  const heroIntro = buildHeroIntro();
   await runPreloader();
 
   refreshTriggers();
-  // built just-in-time so from() states only exist while animating
-  buildHeroIntro().play();
+  heroIntro.play();
 }
 
 boot();

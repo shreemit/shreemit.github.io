@@ -6,6 +6,8 @@ export interface Experience {
   year: string;
   bullets: string[];
   featuredLink?: { label: string; url: string };
+  /** Older roles render more compactly to keep the timeline skimmable. */
+  compact?: boolean;
 }
 
 export interface Education {
@@ -19,12 +21,8 @@ export interface Project {
   title: string;
   description: string;
   outcome: string;
-  image: string;
-  imageWidth: number;
-  imageHeight: number;
   badges: string[];
   github: string;
-  demo?: string;
   role?: string;
 }
 
@@ -45,12 +43,13 @@ export const identity = {
   location: "Seattle, WA",
   siteUrl: "https://shreemit.github.io/",
   ogImage: "https://shreemit.github.io/og.jpg",
+  contactKicker: "05 / HIRING FOR APPLIED AI OR SEARCH?",
 };
 
 export const about = {
   paragraphs: [
-    "Hey there! I'm currently at Axon building LLM-powered systems for semantic search and case intelligence — from Go microservices that manage multi-turn context to evaluation pipelines that validate AI quality at scale.",
-    "I specialize in shipping production AI: retrieval systems, synthetic eval data, rubric-based quality harnesses, and the services that keep them reliable under load. Before that I built healthcare ML and consumer products spanning Swift, PyTorch, and AWS.",
+    "I ship the unglamorous parts of production AI: multi-turn retrieval services, synthetic evaluation data, rubric-based quality harnesses, and the load paths that keep them honest under real traffic.",
+    "Before Axon I built healthcare ML and consumer products across Swift, PyTorch, and AWS — from cervical-cancer screening models to an EHR app that reached 8,000+ active users.",
     "Open to AI/ML engineering roles focused on LLM systems, evaluation, and applied ML — especially where search quality and real-world impact matter.",
   ],
 };
@@ -62,11 +61,33 @@ export const skillGroups = [
   },
   {
     label: "Frameworks",
-    items: ["PyTorch", "Hugging Face", "React", "LangChain", "Scikit-learn"],
+    items: [
+      "PyTorch",
+      "Hugging Face",
+      "LangChain",
+      "OpenAI",
+      "TensorFlow",
+      "Scikit-learn",
+      "React",
+      "Flask",
+      "Pandas",
+      "NLTK",
+    ],
   },
   {
     label: "Tools",
-    items: ["Docker", "AWS", "Weights & Biases", "Git"],
+    items: [
+      "Docker",
+      "AWS",
+      "Azure",
+      "Weights & Biases",
+      "Pinecone",
+      "Airflow",
+      "MongoDB",
+      "DynamoDB",
+      "Git",
+      "Linux",
+    ],
   },
 ];
 
@@ -78,10 +99,10 @@ export const experience: Experience[] = [
     date: "Feb 2025 — Present",
     year: "2025",
     bullets: [
-      "Led the design and architecture of a Go microservice that uses LLM-powered semantic search to query a case database, managing context across multi-turn interactions to surface connections between crime cases via shared identifiers, behavioral patterns, and narrative similarities.",
-      "Built a synthetic crime report generation pipeline to produce realistic police case data with intentionally seeded connections, enabling ground-truth evaluation of Case Compass's link-detection engine.",
-      "Developed a rubric-based testing harness that evaluates discovered case connections against structured scoring criteria, producing interpretable quality metrics to validate the AI search core.",
-      "Established sandboxed evaluation environments with controlled model access, stress testing the full stack to validate system reliability under load.",
+      "Led a Go microservice for LLM-powered semantic search over case data, managing multi-turn context to surface links via shared identifiers, behavioral patterns, and narrative similarity.",
+      "Built a synthetic crime-report pipeline with intentionally seeded connections, giving Case Compass ground-truth data for link-detection evaluation.",
+      "Shipped a rubric-based testing harness that scores discovered case connections against structured criteria and produces interpretable quality metrics.",
+      "Stood up sandboxed eval environments with controlled model access and full-stack stress tests to validate reliability under load.",
     ],
   },
   {
@@ -90,8 +111,8 @@ export const experience: Experience[] = [
     date: "Dec 2024 — Jan 2025",
     year: "2024",
     bullets: [
-      "Built a conversational AI companion with natural-language chat, preference memory, and history-aware responses across a full-stack TypeScript/Python stack.",
-      "Implemented session context handling and personalization so replies stayed coherent across multi-turn conversations rather than single-shot prompts.",
+      "Built a conversational AI companion with preference memory and history-aware replies across a TypeScript/Python stack.",
+      "Implemented session context so multi-turn chats stayed coherent instead of single-shot prompts.",
     ],
   },
   {
@@ -100,8 +121,9 @@ export const experience: Experience[] = [
     companyUrl: "https://www.washington.edu",
     date: "Dec 2023 — Mar 2024",
     year: "2023",
+    compact: true,
     bullets: [
-      "Designed coding assignments and projects applying LLMs to real-world scenarios, supporting student understanding of modern AI techniques through hands-on, collaborative coursework.",
+      "Designed LLM coding assignments and projects for real-world scenarios in collaborative coursework.",
     ],
   },
   {
@@ -110,8 +132,8 @@ export const experience: Experience[] = [
     date: "Jun 2023 — Sept 2023",
     year: "2023",
     bullets: [
-      "Trained computer vision ML models by conducting an ablation study and building MLOps pipelines using Weights and Biases to enable fast experimentation and comparisons for cervical cancer screening, achieving an accuracy of 94%.",
-      "Developed an embedding projector tool utilizing semantic maps using GradCAM to visualize data interactions within class labels and improve the cervical cancer classification model's predictions.",
+      "Trained cervical-cancer screening CV models with ablation studies and W&B MLOps pipelines, reaching 94% accuracy.",
+      "Built a GradCAM embedding projector to visualize class interactions and improve classification decisions.",
     ],
   },
   {
@@ -120,11 +142,10 @@ export const experience: Experience[] = [
     companyUrl: "https://nanostring.com/",
     date: "Jan 2023 — Jun 2023",
     year: "2023",
+    compact: true,
     bullets: [
-      "Trained a custom deep learning U-Net architecture using PyTorch for RNA tissue sample analysis.",
-      "Improved prediction accuracy by 40% compared to traditional image processing methods.",
-      "Implemented transfer learning strategy to expedite RNA molecule identification across four color emission PSFs.",
-      "Reduced training time and computational resource requirements.",
+      "Trained a PyTorch U-Net for RNA tissue analysis, improving prediction accuracy 40% vs. classical image processing.",
+      "Used transfer learning across four color-emission PSFs to cut training time and compute.",
     ],
   },
   {
@@ -138,9 +159,8 @@ export const experience: Experience[] = [
       url: "https://apps.apple.com/in/app/resolute/id1570787708",
     },
     bullets: [
-      "Led the design and development of Resolute using Swift with MVVM architecture, which facilitated secure EHR data storage and offered AI-powered preventive care — leading to over 8000 active users and a 4.7-star rating.",
-      "Built privacy-preserving patient record services in DynamoDB via REST APIs using AWS Lambda and Amplify, establishing user trust through secure, compliant data handling.",
-      "Implemented user authentication and access management using Amazon Cognito, reducing security overhead and improving development velocity for the team.",
+      "Led Resolute (Swift/MVVM): secure EHR storage and AI preventive care — 8,000+ active users, 4.7★ App Store rating.",
+      "Shipped privacy-preserving patient APIs on DynamoDB, Lambda, Amplify, and Cognito for auth and access control.",
     ],
   },
   {
@@ -149,9 +169,9 @@ export const experience: Experience[] = [
     companyUrl: "https://www.humanfractal.ai/",
     date: "Nov 2020 — Feb 2021",
     year: "2020",
+    compact: true,
     bullets: [
-      "Developed an interactive chatbot using Amazon Lex and AWS Lambda to streamline hospital appointment scheduling, reducing hospital workloads by 20%.",
-      "Optimized scalability and reliability with serverless Lambda functions fetching appointments through a RESTful API.",
+      "Built an Amazon Lex + Lambda appointment chatbot that reduced hospital scheduling workload by ~20%.",
     ],
   },
 ];
@@ -187,11 +207,8 @@ export const projects: Project[] = [
     description:
       "RAG chatbot that recommends apartments from natural-language preferences using embeddings and vector search.",
     outcome:
-      "End-to-end retrieval pipeline: OpenAI embeddings, Pinecone index, and LangChain orchestration for tailored listings.",
+      "Indexed listings with OpenAI embeddings + Pinecone; LangChain retrieval returns preference-matched apartments in a single conversational turn.",
     role: "Solo project",
-    image: "/images/leasegpt.webp",
-    imageWidth: 2048,
-    imageHeight: 2048,
     badges: ["OpenAI", "LangChain", "Pinecone", "Vector DB"],
     github: "https://github.com/shreemit/LeaseGPT",
   },
@@ -200,11 +217,8 @@ export const projects: Project[] = [
     description:
       "Multimodal model that captions handwritten student assignments with parameter-efficient fine-tuning.",
     outcome:
-      "LoRA adaptation for vision-language annotation — efficient training without full model fine-tunes.",
+      "LoRA-adapted a vision-language model for assignment captioning — trainable on consumer GPUs without full-model fine-tunes.",
     role: "Solo / research",
-    image: "/images/lora.webp",
-    imageWidth: 2048,
-    imageHeight: 2048,
     badges: ["LoRA", "Multimodal ML", "Computer Vision", "NLP"],
     github: "https://github.com/shreemit/handwritten-notes-captioning",
   },
@@ -213,11 +227,8 @@ export const projects: Project[] = [
     description:
       "Seq2seq T5 model fine-tuned to generate novel recipes from ingredient lists.",
     outcome:
-      "Trained on 1M+ recipes; demonstrates large-scale NLP fine-tuning and generative evaluation.",
+      "Fine-tuned T5 on 1M+ recipes; evaluated generative quality across ingredient-to-recipe prompts at scale.",
     role: "Solo project",
-    image: "/images/recipe.webp",
-    imageWidth: 2048,
-    imageHeight: 2048,
     badges: ["PyTorch", "Hugging Face", "NLP", "Transformers"],
     github: "https://github.com/shreemit/RecipeGeneratorNLP",
   },
@@ -226,11 +237,8 @@ export const projects: Project[] = [
     description:
       "Vision Transformer with dynamic expert routing for CIFAR-10 classification.",
     outcome:
-      "Compared MoE routing against dense baselines to study accuracy vs. compute tradeoffs.",
+      "Benchmarked MoE routing vs. dense ViT baselines on CIFAR-10 to quantify accuracy vs. compute tradeoffs.",
     role: "Solo / research",
-    image: "/images/moe.webp",
-    imageWidth: 1024,
-    imageHeight: 1024,
     badges: ["PyTorch", "Computer Vision", "Transformers", "ML"],
     github: "https://github.com/shreemit/ViT-MoE",
   },
@@ -239,11 +247,8 @@ export const projects: Project[] = [
     description:
       "Hybrid recommender combining collaborative and content-based filtering.",
     outcome:
-      "Benchmarked ranking quality across filtering strategies with systematic evaluation.",
+      "Compared collaborative, content-based, and hybrid ranking strategies with systematic evaluation of recommendation quality.",
     role: "Solo project",
-    image: "/images/movies.webp",
-    imageWidth: 2048,
-    imageHeight: 2048,
     badges: ["Python", "ML", "Recommendation Systems", "Data Analysis"],
     github: "https://github.com/shreemit/movie-recs",
   },

@@ -30,9 +30,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap"
+      />
+    </noscript>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -173,7 +186,7 @@
         <div class="about-pin" id="about-pin">
           <div class="about-grid">
             <div class="about-media">
-              <div class="about-media-frame" id="portrait-frame" data-hover>
+              <div class="about-media-frame" id="portrait-frame">
                 <img
                   src="/images/portrait.webp"
                   alt="Portrait of Shreemit Garimella"
@@ -187,6 +200,7 @@
             </div>
             <div class="about-text">
               <p class="section-label mono">01 / ABOUT</p>
+              <h2 class="section-title about-title visually-hidden">About</h2>
               <div id="about-lines"></div>
             </div>
           </div>
@@ -206,20 +220,27 @@
       </section>
 
       <section class="projects" id="projects">
-        <div class="projects-pin" id="projects-pin">
-          <div class="projects-track" id="projects-track"></div>
+        <div class="projects-inner">
+          <div class="projects-head">
+            <p class="section-label mono">03 / SELECTED WORK</p>
+            <h2 class="section-title">THINGS I'VE<br />BUILT</h2>
+            <a class="projects-all" id="projects-all" href="#" target="_blank" rel="noopener" data-hover>SEE EVERYTHING →</a>
+          </div>
+          <div class="projects-list" id="projects-list"></div>
         </div>
       </section>
 
       <section class="skills" id="skills">
         <p class="section-label mono skills-label">04 / ARSENAL</p>
+        <h2 class="skills-title">WHAT I<br />BUILD WITH</h2>
         <div class="skills-bento" id="skills-bento"></div>
       </section>
 
       <section class="contact" id="contact">
         <p class="contact-kicker mono" id="contact-kicker">
-          05 / GOT AN IDEA? MY INBOX IS ALWAYS OPEN.
+          05 / HIRING FOR APPLIED AI OR SEARCH?
         </p>
+        <h2 class="visually-hidden">Contact</h2>
         <a
           class="contact-title"
           id="contact-title"

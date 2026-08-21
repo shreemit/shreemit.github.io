@@ -68,6 +68,9 @@ export function renderIdentity(): void {
     email.href = `mailto:${identity.email}`;
     email.textContent = identity.email.toUpperCase();
   }
+
+  const contactKicker = document.getElementById("contact-kicker");
+  if (contactKicker) contactKicker.textContent = identity.contactKicker;
 }
 
 export function renderAbout(): void {
@@ -82,7 +85,7 @@ export function renderExperience(): void {
   timeline.innerHTML = experience
     .map(
       (xp) => `
-      <div class="xp-item">
+      <div class="xp-item${xp.compact ? " xp-item--compact" : ""}">
         <div class="xp-year" aria-hidden="true">${xp.year}</div>
         <div class="xp-card">
           <h3 class="xp-role">${xp.role}</h3>
@@ -124,74 +127,53 @@ export function renderExperience(): void {
 }
 
 export function renderProjects(): void {
-  const track = document.getElementById("projects-track")!;
-  const cards = projects
+  const list = document.getElementById("projects-list")!;
+  const all = document.getElementById("projects-all") as HTMLAnchorElement | null;
+  if (all) all.href = identity.github;
+
+  list.innerHTML = projects
     .map(
       (p, i) => `
-      <article class="proj-card">
-        <div class="proj-index" aria-hidden="true">0${i + 1}</div>
-        <div class="proj-media" data-distort data-hover>
-          <img
-            src="${p.image}"
-            alt="${p.title}"
-            width="${p.imageWidth}"
-            height="${p.imageHeight}"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <h3 class="proj-title">${p.title}</h3>
-        ${p.role ? `<p class="proj-role mono">${p.role}</p>` : ""}
-        <p class="proj-desc">${p.description}</p>
-        <p class="proj-outcome">${p.outcome}</p>
-        <div class="badges">
-          ${p.badges.map((b) => `<span>${b}</span>`).join("")}
-        </div>
-        <div class="proj-links">
-          <a class="proj-link" href="${p.github}" target="_blank" rel="noopener" data-hover>GITHUB ↗</a>
-          ${
-            p.demo
-              ? `<a class="proj-link" href="${p.demo}" target="_blank" rel="noopener" data-hover>LIVE DEMO ↗</a>`
-              : ""
-          }
+      <article class="proj-row">
+        <div class="proj-index" aria-hidden="true">${String(i + 1).padStart(2, "0")}</div>
+        <div class="proj-body">
+          <h3 class="proj-title">${p.title}</h3>
+          ${p.role ? `<p class="proj-role mono">${p.role}</p>` : ""}
+          <p class="proj-desc">${p.description}</p>
+          <p class="proj-outcome">${p.outcome}</p>
+          <div class="badges">
+            ${p.badges.map((b) => `<span>${b}</span>`).join("")}
+          </div>
+          <div class="proj-links">
+            <a class="proj-link" href="${p.github}" target="_blank" rel="noopener" data-hover>GITHUB ↗</a>
+          </div>
         </div>
       </article>`
     )
     .join("");
-
-  track.innerHTML = `
-    <div class="proj-intro">
-      <p class="section-label mono">03 / SELECTED WORK</p>
-      <h2 class="section-title">THINGS<br />I'VE BUILT</h2>
-    </div>
-    ${cards}
-    <div class="proj-outro">
-      <a href="${identity.github}" target="_blank" rel="noopener" data-hover>SEE EVERYTHING →</a>
-    </div>`;
 }
 
 export function renderSkills(): void {
   const bento = document.getElementById("skills-bento")!;
-  let index = 0;
   bento.innerHTML = skillGroups
-    .map(
-      (group) => `
-      <div class="skill-group">
-        <p class="skill-group-label mono">${group.label}</p>
-        <div class="skill-group-grid">
+    .map((group, gi) => {
+      const slug = group.label.toLowerCase().replace(/\s+/g, "-");
+      return `
+      <div class="skill-group skill-group--${slug}">
+        <h3 class="skill-group-label mono">
+          <span class="skill-group-index" aria-hidden="true">${String(gi + 1).padStart(2, "0")}</span>
+          ${group.label}
+        </h3>
+        <div class="skill-chips">
           ${group.items
-            .map((name) => {
-              const i = index++;
-              return `
-              <div class="skill-cell${i % 2 === 1 ? " skill-cell-outline" : ""}" data-hover>
-                <span class="skill-index mono" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
-                <span class="skill-name">${name}</span>
-              </div>`;
-            })
+            .map(
+              (name, i) =>
+                `<span class="skill-chip mono magnetic${i % 2 === 1 ? " skill-chip-outline" : ""}" data-hover>${name}</span>`
+            )
             .join("")}
         </div>
-      </div>`
-    )
+      </div>`;
+    })
     .join("");
 }
 

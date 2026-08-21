@@ -4,7 +4,6 @@ import {
   SplitText,
   SCRAMBLE_CHARS,
 } from "../core/motion";
-import { scrollState } from "../core/scroll";
 import { setImageRevealProgress } from "../webgl/imageReveal";
 
 /** Hero entrance, played after the preloader wipe. */
@@ -116,21 +115,40 @@ export function initHeroScroll(): void {
   });
 }
 
-/** Pinned about section: bio scrubbed in word by word, portrait wipe-in. */
+/** About: pinned word scrub on desktop; unpinned scrub on mobile. */
 export function initAbout(): void {
   new SplitText(".about-line", { type: "words", wordsClass: "word" });
 
-  gsap
-    .timeline({
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 901px)", () => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#about-pin",
+          start: "top top",
+          end: "+=140%",
+          pin: true,
+          scrub: 0.6,
+        },
+      })
+      .to(".about-line .word", { opacity: 1, stagger: 0.05, ease: "none" });
+  });
+
+  mm.add("(max-width: 900px)", () => {
+    // No pin — section is taller than the viewport; scrub words as it scrolls through
+    gsap.to(".about-line .word", {
+      opacity: 1,
+      stagger: 0.05,
+      ease: "none",
       scrollTrigger: {
-        trigger: "#about-pin",
-        start: "top top",
-        end: "+=140%",
-        pin: true,
+        trigger: "#about",
+        start: "top 75%",
+        end: "bottom 45%",
         scrub: 0.6,
       },
-    })
-    .to(".about-line .word", { opacity: 1, stagger: 0.05, ease: "none" });
+    });
+  });
 
   gsap.from(".about-media-caption", {
     autoAlpha: 0,
@@ -152,6 +170,7 @@ export function initExperience(): void {
       skewY: 3,
       duration: 1,
       ease: "power3.out",
+      immediateRender: false,
       scrollTrigger: { trigger: item, start: "top 80%" },
     });
 
@@ -176,6 +195,7 @@ export function initExperience(): void {
     autoAlpha: 0,
     duration: 1,
     ease: "power4.out",
+    immediateRender: false,
     scrollTrigger: { trigger: "#experience", start: "top 70%" },
   });
 
@@ -185,11 +205,12 @@ export function initExperience(): void {
     stagger: 0.12,
     duration: 0.9,
     ease: "power3.out",
+    immediateRender: false,
     scrollTrigger: { trigger: "#education", start: "top 80%" },
   });
 }
 
-/** Scroll-scrubbed image reveals for portrait + project thumbnails. */
+/** Scroll-scrubbed image reveal for the about portrait. */
 export function initImageReveals(): void {
   const portrait = document.getElementById("portrait-frame");
   if (portrait) {
@@ -215,95 +236,83 @@ export function initImageReveals(): void {
       }
     );
   }
-
-  gsap.utils.toArray<HTMLElement>(".proj-media").forEach((media) => {
-    gsap.from(media, {
-      y: 60,
-      scale: 1.05,
-      autoAlpha: 0,
-      duration: 1,
-      ease: "power3.out",
-      onUpdate: function () {
-        setImageRevealProgress(media, this.progress());
-      },
-      scrollTrigger: { trigger: media, start: "top 82%" },
-    });
-
-    const img = media.querySelector("img");
-    if (img) {
-      gsap.fromTo(
-        img,
-        { yPercent: 8 },
-        {
-          yPercent: -8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: media.closest(".proj-card") ?? media,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    }
-  });
 }
 
-/** Horizontal-scroll projects: vertical scroll drives the track sideways. */
+/** Typographic project list: stagger-in rows on enter. */
 export function initProjects(): void {
-  const mm = gsap.matchMedia();
-
-  mm.add("(min-width: 901px)", () => {
-    const track = document.getElementById("projects-track")!;
-    const amount = () => track.scrollWidth - window.innerWidth;
-
-    gsap.to(track, {
-      x: () => -amount(),
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top top",
-        end: () => `+=${amount()}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    });
-
-    // subtle velocity skew on the cards while flying through
-    const proxy = { skew: 0 };
-    const skewSetter = gsap.quickSetter(".proj-card", "skewX", "deg");
-    const clamp = gsap.utils.clamp(-6, 6);
-    gsap.ticker.add(() => {
-      const target = clamp(scrollState.velocity * -0.18);
-      proxy.skew += (target - proxy.skew) * 0.1;
-      skewSetter(proxy.skew);
-    });
+  gsap.from(".projects-head .section-title", {
+    yPercent: 40,
+    autoAlpha: 0,
+    duration: 1,
+    ease: "power4.out",
+    immediateRender: false,
+    scrollTrigger: { trigger: "#projects", start: "top 75%" },
   });
 
-  mm.add("(max-width: 900px)", () => {
-    gsap.utils.toArray<HTMLElement>(".proj-card").forEach((card) => {
-      gsap.from(card, {
-        y: 80,
-        autoAlpha: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        scrollTrigger: { trigger: card, start: "top 85%" },
-      });
-    });
+  gsap.from(".proj-row", {
+    y: 40,
+    autoAlpha: 0,
+    stagger: 0.08,
+    duration: 0.8,
+    ease: "power3.out",
+    immediateRender: false,
+    scrollTrigger: { trigger: "#projects", start: "top 70%" },
   });
 }
 
-/** Skills bento grid: staggered scroll reveal. */
+/** Skills chips: scramble-in on scroll, scramble + magnetic on hover. */
 export function initSkills(): void {
-  gsap.from(".skill-cell", {
+  gsap.from(".skills-title", {
     y: 40,
     autoAlpha: 0,
     duration: 0.8,
     ease: "power3.out",
-    stagger: 0.06,
-    scrollTrigger: { trigger: "#skills", start: "top 75%" },
+    immediateRender: false,
+    scrollTrigger: { trigger: "#skills", start: "top 80%" },
+  });
+
+  gsap.from(".skill-group", {
+    y: 28,
+    autoAlpha: 0,
+    duration: 0.7,
+    ease: "power3.out",
+    stagger: 0.12,
+    immediateRender: false,
+    scrollTrigger: { trigger: "#skills", start: "top 78%" },
+  });
+
+  document.querySelectorAll<HTMLElement>(".skill-chip").forEach((chip, i) => {
+    const original = chip.textContent ?? "";
+    gsap.from(chip, {
+      autoAlpha: 0,
+      y: 16,
+      duration: 0.55,
+      delay: 0.05 * (i % 6),
+      ease: "power3.out",
+      immediateRender: false,
+      scrollTrigger: { trigger: "#skills", start: "top 75%" },
+      onStart: () => {
+        gsap.to(chip, {
+          duration: 0.55,
+          scrambleText: {
+            text: original,
+            chars: SCRAMBLE_CHARS,
+            speed: 1.4,
+          },
+        });
+      },
+    });
+
+    chip.addEventListener("pointerenter", () => {
+      gsap.to(chip, {
+        duration: 0.55,
+        scrambleText: {
+          text: original,
+          chars: SCRAMBLE_CHARS,
+          speed: 1.3,
+        },
+      });
+    });
   });
 }
 

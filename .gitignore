@@ -2,3 +2,6 @@ node_modules
 dist
 .DS_Store
 *.local
+
+# Generated from content/blog/*.md by scripts/blog.mjs
+/blog/
